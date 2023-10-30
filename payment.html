@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page - Parfait Delights</title>
+    <!-- Add Paystack.js library -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+</head>
+<body>
+    <header class="bg-warning text-center py-5">
+        <h1 class="display-3">Welcome to Parfait Delights</h1>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Parfait Delights</a>
+            <!-- Add your navigation menu here -->
+        </div>
+    </nav>
+    <main class="container py-4">
+        <h2 class="text-center py-4">Checkout</h2>
+        <div class="text-center">
+            <p>Total Amount: $10.00</p>
+            <button onclick="initializePayment()">Pay Now</button>
+        </div>
+    </main>
+    <footer class="bg-warning text-center py-3">
+        <p>&copy; 2023 Parfait Delights</p>
+    </footer>
+
+    <!-- Add your JavaScript code for Paystack integration -->
+    <script>
+        function initializePayment() {
+            const paymentForm = {
+                key: 'your_public_key', // Replace with your Paystack public key
+                email: 'customer@example.com', // Replace with the customer's email
+                amount: 1000000, // Amount in kobo (₦1,000.00)
+                currency: 'NGN', // Nigerian Naira
+                ref: 'PARFAIT_ORDER_' + Math.floor((Math.random() * 1000000000 + 1)), // Generate a unique reference
+                callback: function(response) {
+                    // Handle the payment response (success or failure)
+                    if (response.status === 'success') {
+                        // Payment successful
+                        alert('Payment was successful. Your order will be processed.');
+                    } else {
+                        // Payment failed
+                        alert('Payment was not successful. Please try again.');
+                    }
+                },
+            };
+
+            // Initialize Paystack
+            const paymentObject = PaystackPop.setup(paymentForm);
+            paymentObject.openIframe();
+        }
+    </script>
+</body>
+</html>

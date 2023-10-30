@@ -1,0 +1,18 @@
+      /* Custom CSS for the Efficiency section */
+      .efficiency-section {
+        background-color: #f4f4f4;
+        padding: 50px 0;
+    }
+    .efficiency-icon {
+        font-size: 60px;
+        color: #ff5733; /* You can choose your brand color */
+    }
+    .efficiency-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .efficiency-description {
+        font-size: 18px;
+        margin-top: 10px;
+    }
